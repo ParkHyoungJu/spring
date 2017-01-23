@@ -24,6 +24,20 @@ public class UsersController {
 	private UsersService usersService;
 	
 	
+	// "/users/private/delete.do" 개인정보 삭체 요청 처리
+	@RequestMapping("/users/private/delete")
+	public ModelAndView delte(HttpSession session){
+		//세션에 저장된 아이디 값을 읽어온다.
+		String id = (String)session.getAttribute("id");
+		usersService.delete(id);
+		session.invalidate();
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("msg","회원 탈퇴 처리 하였습니다.");
+		mView.addObject("redirectUri", session.getServletContext().getContextPath());
+		mView.setViewName("users/alert");
+		return mView;
+	}
+	
 	// "/users/private/update.do" 개인정보 수정 요청 처리
 	@RequestMapping("/users/private/update")
 	public ModelAndView update(@ModelAttribute UsersDto dto, 
