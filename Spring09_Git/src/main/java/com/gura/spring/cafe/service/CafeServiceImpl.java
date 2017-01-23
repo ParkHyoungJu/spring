@@ -35,8 +35,11 @@ public class CafeServiceImpl implements CafeService{
 
 	@Override
 	public ModelAndView getData(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		CafeDto dto = cafeDao.getData(num);
+		cafeDao.increaseViewCount(num);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("dto",dto);
+		return mView;
 	}
 
 	@Override
