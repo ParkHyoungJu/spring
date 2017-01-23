@@ -44,14 +44,23 @@ public class CafeServiceImpl implements CafeService{
 
 	@Override
 	public void update(CafeDto dto) {
-		// TODO Auto-generated method stub
+		cafeDao.update(dto);
 		
 	}
 
 	@Override
 	public void delete(int num) {
-		// TODO Auto-generated method stub
+		cafeDao.delete(num);
 		
+	}
+
+	@Override
+	public ModelAndView updateForm(int num) {
+		CafeDto dto =cafeDao.getData(num);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("dto",dto);
+		
+		return mView;
 	}
 
 }
