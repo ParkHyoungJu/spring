@@ -18,15 +18,13 @@ public class UsersDaoImpl implements UsersDao{
 		session.insert("users.insert",dto);
 		
 	}
-
+	
+	//인자로 전달된 아이디에 해당하는 비밀번호를 리턴해주는 메소드
 	@Override
-	public boolean isValid(UsersDto dto) {
-		UsersDto resultDto =session.selectOne("users.isValid",dto);
-		if(resultDto ==null){
-			return false;
-		}else{
-			return true;
-		}
+	public String getPassword(String id) {
+		String password=session.selectOne("users.getPwd",id);
+		
+		return password;
 	}
 
 	@Override
@@ -58,6 +56,7 @@ public class UsersDaoImpl implements UsersDao{
 
 		return dto;
 	}
+
 
 }
 
