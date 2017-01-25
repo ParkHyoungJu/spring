@@ -79,6 +79,9 @@ public class CafeServiceImpl implements CafeService{
 		mView.addObject("endPageNum",endPageNum);
 		mView.addObject("totalPageCount",totalPageCount);
 		
+		System.out.println("pageNum: "+pageNum+" startPageNum: "+startPageNum
+				+" endPageNum: "+endPageNum+" totalPageCount: "+totalPageCount);
+		
 		//리턴해주기
 		return mView;
 	}
